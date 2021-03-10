@@ -16,12 +16,23 @@
 #include "params.h"
 #include "queue.h"
 
+ void inverseLED(){
+    for(;;){
+        Cy_GPIO_Write(GreenLED_PORT,GreenLED_NUM, 1);
+        vTaskDelay(pdMS_TO_TICKS(500));
+        Cy_GPIO_Write(GreenLED_PORT,GreenLED_NUM, 0);
+        vTaskDelay(pdMS_TO_TICKS(500));
+    }
+
+}
+
 int main(void)
 {
     __enable_irq(); /* Enable global interrupts. */
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-
+    xTaskCreate(inverseLED," ", 500, NULL, 1,0);
+    vTaskStartScheduler();
     for(;;)
     {
         /* Place your application code here. */

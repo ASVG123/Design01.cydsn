@@ -49,4 +49,8 @@
 modules.order
 Module.symvers
 Mkfile.old
-dkms.conf
+dkms.confbuild/Release
+codegentemp
+Generated_Source
+CortexM4
+CortexM0P
